@@ -22,6 +22,10 @@ title: Rakennusdata
 
 ### properties
 
+#### kaupunginosa
+
+- "I" - "IV"
+
 #### tyyppi
 
 - "yksityinen"

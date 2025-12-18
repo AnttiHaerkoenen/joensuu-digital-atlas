@@ -10,6 +10,7 @@ export const rakennukset = {
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1887",
                 "end": "1950",
+                "kaupunginosa": "II",
                 "oikeudet": "Wikimedia Commons"
             },
             "geometry": {
@@ -48,6 +49,7 @@ export const rakennukset = {
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1935",
                 "end": "2024",
+                "kaupunginosa": "I",
                 "oikeudet": "Wikimedia Commons"
             },
       "geometry": {

@@ -6,6 +6,9 @@ toc: false
 
 # Rakennuskannan kehitys
 
+<div id="grid1" class="grid grid-cols-2">
+<div class="card">
+
 ```js
 const year = view(Inputs.range([1900, 2025], {step: 5, value: 1900}));
 ```
@@ -13,18 +16,18 @@ const year = view(Inputs.range([1900, 2025], {step: 5, value: 1900}));
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
 
-const div = display(document.createElement("div"));
-div.style = "height: 600px;";
+const mapDiv = display(document.createElement("div"));
+mapDiv.style = "height: 700px;";
 
 /*function onLocationFound(e) {
     var radius = e.accuracy;
     L.circle(e.latlng, radius).addTo(map).bindPopup("Olet jossain täällä").openPopup();
 }*/
 
-const map = L.map(div, {
+const map = L.map(mapDiv, {
     minZoom: 14,
     maxZoom: 17,
-    maxBounds: [[62.588, 29.73081], [62.625, 29.77592]],
+    maxBounds: [[62.588, 29.73081], [62.635, 29.77592]],
 })
   .setView([62.599977, 29.756126], 14);
   /*.locate({
@@ -34,22 +37,14 @@ const map = L.map(div, {
   })
   .on('locationfound', onLocationFound);*/
 
-
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 })
 .addTo(map);
 
 function buildingPopUp(feature) {
-    return html`<div class="popup">
-    <h2>${feature.properties.nimi}</h2>
-    <figure>
-    <img src="${feature.properties.url}">
-    <figcaption> &copy; ${feature.properties.oikeudet} </figcaption>
-    </figure>
-    <p>${feature.properties.teksti}</p>
-    </div>`;
-}
+    return html`<div class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; feature.properties.oikeudet} </figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+};
 
 L.geoJSON(rakennukset, {
     style: function (feature) {
@@ -71,15 +66,23 @@ L.geoJSON(rakennukset, {
     }
 }).addTo(map);
 ```
+</div>
+
+<div id="sidepanel" class="card"></div>
+</div>
 
 <style>
+
+#observablehq-footer {
+    margin-top: 4px;
+}
 
 .popup {
   display: flex;
   flex-direction: column;
   align-items: left;
   text-wrap: balance;
-  max-height: 90%;
+  max-height: 80%;
   max-width: 100%;
   min-width: 200px;
 }
@@ -92,15 +95,24 @@ L.geoJSON(rakennukset, {
 .popup p {
     font-size: 14px;
     margin-top: 2px;
+    margin-bottom: 2px;
     text-align: justify;
+    font-family: var(--serif);
+}
+
+.popup footer {
+    font-size: 12px;
+    margin-top: 4px;
+    text-align: left;
+    font-style: italic;
     font-family: var(--serif);
 }
 
 .popup img {
     max-height: 100%;
-    min-height: 150px;
+    min-height: 200px;
     max-width: 100%;
-    min-width: 150px;
+    min-width: 200px;
     aspect-ratio: auto;
 }
 
