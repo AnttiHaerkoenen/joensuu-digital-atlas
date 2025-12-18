@@ -43,7 +43,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 .addTo(map);
 
 function buildingPopUp(feature) {
-    return html`<div class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; feature.properties.oikeudet} </figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+    return html`<div class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
 };
 
 L.geoJSON(rakennukset, {
