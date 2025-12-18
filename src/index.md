@@ -8,29 +8,6 @@ toc: false
   <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
 </div>
 
-```js
-import * as L from "npm:leaflet";
-const div = display(document.createElement("div"));
-div.style = "height: 400px;";
-
-const map = L.map(div)
-  .setView([51.505, -0.09], 6);
-
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-})
-  .addTo(map);
-
-L.marker([year - 1900, -0.09])
-  .addTo(map)
-  .bindPopup("A nice popup<br> indicating a point of interest.")
-  .openPopup();
-```
-
-```js
-const year = view(Inputs.range([1900, 2025], {step: 5}));
-```
-
 <div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
   <div class="card">${
     resize((width) => Plot.plot({

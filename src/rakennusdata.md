@@ -4,12 +4,13 @@ title: Rakennusdata
 
 # Selite
 
-## rakennukset.json
+### rakennukset.json
 
-### geometries
+- [GeoJSON-standardin](https://geojsonlint.com) mukainen tekstitiedosto
 
-#### types
+### Geometriatyypit
 
+- "FeatureCollection"-kokoelmatyyppi
 - "Polygon"
 - "Point"
 
@@ -31,3 +32,7 @@ title: Rakennusdata
 
 - kuvan pysyvä osoite
 - null
+
+#### oikeudet
+
+- kuvan oikeuden haltija
