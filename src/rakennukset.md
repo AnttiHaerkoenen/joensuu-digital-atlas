@@ -10,7 +10,10 @@ toc: false
 <div class="card">
 
 ```js
-const year = view(Inputs.range([1900, 2025], {step: 5, value: 1900}));
+const year = view(Inputs.select(
+    ["1900", "1910", "1920", "1930", "1940", "1950", "1960", "1970", "1980", "1990", "2000", "2010", "2020"], 
+    {label: "Vuosi", value: "1900"}
+    ));
 ```
 
 ```js
@@ -88,13 +91,15 @@ L.geoJSON(rakennukset, {
 }
 
 .popup h2 {
+    font-size: 16px;
     text-align: left;
     font-family: var(--sans-serif);
+    font-style: bold;
 }
 
 .popup p {
     font-size: 14px;
-    margin-top: 2px;
+    margin-top: 0px;
     margin-bottom: 2px;
     text-align: justify;
     font-family: var(--serif);
@@ -118,12 +123,13 @@ L.geoJSON(rakennukset, {
 
 .popup figure {
     margin-top: 1px;
-    margin-bottom: 1px;
+    margin-bottom: 0px;
 }
 
 .popup figcaption {
     font-size: 12px;
     font-style: italic;
+    margin-bottom: 0px;
 }
 
 </style>
