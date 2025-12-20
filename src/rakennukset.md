@@ -9,12 +9,6 @@ toc: false
 <div id="grid1" class="grid grid-cols-2">
 <div class="card">
 
-```js
-const year = view(Inputs.select(
-    ["1900", "1910", "1920", "1930", "1940", "1950", "1960", "1970", "1980", "1990", "2000", "2010", "2020"], 
-    {label: "Vuosi", value: "1900"}
-    ));
-```
 
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
@@ -46,7 +40,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 .addTo(map);
 
 function buildingPopUp(feature) {
-    return html`<div class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+    return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
 };
 
 L.geoJSON(rakennukset, {
@@ -68,10 +62,20 @@ L.geoJSON(rakennukset, {
         return feature.properties.start <= year && year <= feature.properties.end;
     }
 }).addTo(map);
+
 ```
 </div>
 
-<div id="sidepanel" class="card"></div>
+<div id="sidepanel" class="card">
+
+<label for="yearInput">Vuosi</label>
+<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="4">
+
+```js
+const year = Generators.input(yearInput);
+```
+
+</div>
 </div>
 
 <style>
@@ -130,6 +134,17 @@ L.geoJSON(rakennukset, {
     font-size: 12px;
     font-style: italic;
     margin-bottom: 0px;
+}
+
+label {
+    font-size: 20px;
+    padding: 2px;
+}
+
+#yearInput {
+    font-size: 18px;
+    padding: 2px;
+    width: 4em;
 }
 
 </style>
