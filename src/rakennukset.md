@@ -9,9 +9,9 @@ toc: false
 <div id="grid1" class="grid grid-cols-2">
 <div class="card">
 
-
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
+import {ilmakuvat} from "/data/ilmakuvat.json.js";
 
 const mapDiv = display(document.createElement("div"));
 mapDiv.style = "height: 700px;";
@@ -40,15 +40,20 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 .addTo(map);
 
 function buildingPopUp(feature) {
-    return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+    if (feature.properties.url != null) {
+        return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+        }
+    else {
+        return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+    }
 };
 
 L.geoJSON(rakennukset, {
     style: function (feature) {
         switch (feature.properties.tyyppi) {
-            case 'julkinen': return {color: "#ff0000"};
-            case 'yksityinen': return {color: "#0000ff"};
-            case 'puisto': return {color: "#00ff00"};
+            case 'julkinen': return {color: "#e20e0e"};
+            case 'yksityinen': return {color: "#1c1cc5"};
+            case 'puisto': return {color: "#7fd85c"};
         };
     },
     onEachFeature: function (feature, layer) {
@@ -70,6 +75,14 @@ L.geoJSON(rakennukset, {
 
 <label for="yearInput">Vuosi</label>
 <input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="4">
+<div id="picturePanel">
+    <figure>
+        <img id="largeImage" src="https://joensuunvirta.fi/vanhajoensuu/content_img/ilmakuva_3_b.jpg">
+        <figurecaption>
+            ${ilmakuvat[year].caption}
+        </figurecaption>
+    </figure>
+</div>
 
 ```js
 const year = Generators.input(yearInput);
@@ -130,7 +143,12 @@ const year = Generators.input(yearInput);
     margin-bottom: 0px;
 }
 
-.popup figcaption {
+figure {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+figcaption {
     font-size: 12px;
     font-style: italic;
     margin-bottom: 0px;
@@ -145,6 +163,14 @@ label {
     font-size: 18px;
     padding: 2px;
     width: 4em;
+}
+
+#largeImage {
+    max-height: 100%;
+    min-height: 300px;
+    max-width: 100%;
+    min-width: 300px;
+    aspect-ratio: auto;
 }
 
 </style>
