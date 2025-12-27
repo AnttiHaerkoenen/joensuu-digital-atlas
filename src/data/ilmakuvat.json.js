@@ -51,5 +51,4 @@ export const ilmakuvat = {
         "url": null,
         "caption": null,
     },
-
 };

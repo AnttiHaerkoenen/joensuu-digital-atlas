@@ -6,13 +6,39 @@ toc: false
 
 # Rakennuskannan kehitys
 
-<div id="grid1" class="grid grid-cols-2">
-<div class="card">
-
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
 import {ilmakuvat} from "/data/ilmakuvat.json.js";
 
+const kuvat = new Map();
+for (let y in ilmakuvat) {
+    kuvat.set(y, html`<img src="${ilmakuvat[y].url}">`);
+}
+```
+
+<div id="grid1" class="grid grid-cols-2">
+<div id="sidepanel" class="card">
+
+<label for="yearInput">Vuosi</label>
+<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="4">
+<div id="picturePanel">
+    <figure>
+        ${kuvat.get(String(year))}
+        <figurecaption>
+            ${ilmakuvat[year].caption}
+        </figurecaption>
+    </figure>
+</div>
+
+```js
+const year = Generators.input(yearInput);
+```
+
+</div>
+
+<div id="mapPanel" class="card">
+
+```js
 const mapDiv = display(document.createElement("div"));
 mapDiv.style = "height: 700px;";
 
@@ -68,26 +94,10 @@ L.geoJSON(rakennukset, {
     }
 }).addTo(map);
 
+var mapPanel = document.getElementById('mapPanel');
+var parent = mapPanel.parentNode;
+parent.insertBefore(mapPanel, parent.firstChild);
 ```
-</div>
-
-<div id="sidepanel" class="card">
-
-<label for="yearInput">Vuosi</label>
-<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="4">
-<div id="picturePanel">
-    <figure>
-        <img id="largeImage" src="https://joensuunvirta.fi/vanhajoensuu/content_img/ilmakuva_3_b.jpg">
-        <figurecaption>
-            ${ilmakuvat[year].caption}
-        </figurecaption>
-    </figure>
-</div>
-
-```js
-const year = Generators.input(yearInput);
-```
-
 </div>
 </div>
 
@@ -148,9 +158,8 @@ figure {
     margin-bottom: 6px;
 }
 
-figcaption {
-    font-size: 12px;
-    font-style: italic;
+figurecaption {
+    font-size: 14px;
     margin-bottom: 0px;
 }
 
