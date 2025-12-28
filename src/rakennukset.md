@@ -4,23 +4,21 @@ title: Rakennuskannan kehitys
 toc: false
 ---
 
-# Rakennuskannan kehitys
+# Rakennuskannan kehitys 1900-2025
 
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
 import {ilmakuvat} from "/data/ilmakuvat.json.js";
 
 const kuvat = new Map();
-for (let y in ilmakuvat) {
-    kuvat.set(y, html`<img src="${ilmakuvat[y].url}">`);
-}
+for (let y in ilmakuvat) {kuvat.set(y, html`<img src="${ilmakuvat[y].url}">`)}
 ```
 
 <div id="grid1" class="grid grid-cols-2">
 <div id="sidepanel" class="card">
 
 <label for="yearInput">Vuosi</label>
-<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="4">
+<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4>
 <div id="picturePanel">
     <figure>
         ${kuvat.get(String(year))}
@@ -31,9 +29,10 @@ for (let y in ilmakuvat) {
 </div>
 
 ```js
-const year = Generators.input(yearInput);
+const year = Generators.input(
+    yearInput,
+    );
 ```
-
 </div>
 
 <div id="mapPanel" class="card">
@@ -67,10 +66,13 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 function buildingPopUp(feature) {
     if (feature.properties.url != null) {
-        return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2><figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+        return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2>
+        <figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure>
+        <p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
         }
     else {
-        return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2><p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+        return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2>
+        <p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
     }
 };
 
@@ -98,6 +100,7 @@ var mapPanel = document.getElementById('mapPanel');
 var parent = mapPanel.parentNode;
 parent.insertBefore(mapPanel, parent.firstChild);
 ```
+
 </div>
 </div>
 

@@ -18,7 +18,7 @@ title: Rakennusdata
 
 - lista koordinaattipareista muodossa [[x1, y1], [x2, y2], [x3, y3], ... jne.]
 - pisteissä [x, y]
-- koordinaatit desimaaliasteina
+- koordinaatit desimaaliasteina (WGS84)
 
 ### properties
 
