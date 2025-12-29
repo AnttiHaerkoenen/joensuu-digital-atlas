@@ -11,34 +11,22 @@ import {rakennukset} from "/data/rakennukset.json.js";
 import {ilmakuvat} from "/data/ilmakuvat.json.js";
 
 const kuvat = new Map();
-for (let y in ilmakuvat) {kuvat.set(y, html`<img src="${ilmakuvat[y].url}">`)}
+for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmakuvat[y].url}" alt="Virhe: Kuvaa ei löydetty">`)}
 ```
 
-<div id="grid1" class="grid grid-cols-2">
-<div id="sidepanel" class="card">
+<div id="grid1" class="grid grid-cols-2" style="grid-auto-rows: auto;">
 
+<div id="yearPicker" class="card grid-colspan-2">
 <label for="yearInput">Vuosi</label>
 <input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4>
-<div id="picturePanel">
-    <figure>
-        ${kuvat.get(String(year))}
-        <figurecaption>
-            ${ilmakuvat[year].caption}
-        </figurecaption>
-    </figure>
-</div>
-
-```js
-const year = Generators.input(
-    yearInput,
-    );
-```
 </div>
 
 <div id="mapPanel" class="card">
 
+## Interaktiivinen kartta
+
 ```js
-const mapDiv = display(document.createElement("div"));
+const mapDiv = display(document.createElement("div", {"is": "mapDiv"}));
 mapDiv.style = "height: 700px;";
 
 /*function onLocationFound(e) {
@@ -95,12 +83,26 @@ L.geoJSON(rakennukset, {
         return feature.properties.start <= year && year <= feature.properties.end;
     }
 }).addTo(map);
-
-var mapPanel = document.getElementById('mapPanel');
-var parent = mapPanel.parentNode;
-parent.insertBefore(mapPanel, parent.firstChild);
 ```
 
+</div>
+<div id="sidepanel" class="card">
+
+<div id="picturePanel">
+    <h2>${year}-luku</h2>
+    <figure>
+        ${kuvat.get(String(year))}
+        <figurecaption>
+            ${ilmakuvat[year].caption}
+        </figurecaption>
+    </figure>
+</div>
+
+```js
+const year = Generators.input(
+    yearInput,
+    );
+```
 </div>
 </div>
 
@@ -110,14 +112,26 @@ parent.insertBefore(mapPanel, parent.firstChild);
     margin-top: 4px;
 }
 
+.grid {
+    gap: 2px;
+}
+
+#grid1 h2 {
+    font-size: 22px;
+    font-family: var(--sans-serif);
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .popup {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  text-wrap: balance;
-  max-height: 80%;
-  max-width: 100%;
-  min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-wrap: balance;
+    max-height: 80%;
+    max-width: 100%;
+    min-width: 200px;
 }
 
 .popup h2 {
@@ -177,12 +191,15 @@ label {
     width: 4em;
 }
 
-#largeImage {
+#largeImage #leaflet-container {
     max-height: 100%;
     min-height: 300px;
     max-width: 100%;
     min-width: 300px;
-    aspect-ratio: auto;
+    aspect-ratio: auto;    
+    display: flex;
+    flex-direction: column;
+
 }
 
 </style>
