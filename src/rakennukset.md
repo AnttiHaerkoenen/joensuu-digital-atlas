@@ -17,8 +17,9 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 <div id="grid1" class="grid grid-cols-2" style="grid-auto-rows: auto;">
 
 <div id="yearPicker" class="card grid-colspan-2">
-<label for="yearInput">Vuosi</label>
+<label for="yearInput">Vuosikymmen</label>
 <input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4>
+
 </div>
 
 <div id="mapPanel" class="card">
@@ -99,9 +100,7 @@ L.geoJSON(rakennukset, {
 </div>
 
 ```js
-const year = Generators.input(
-    yearInput,
-    );
+const year = Generators.input(yearInput);
 ```
 </div>
 </div>
