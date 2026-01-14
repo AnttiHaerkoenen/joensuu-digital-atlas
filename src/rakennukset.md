@@ -78,8 +78,6 @@ var buildings = L.geoJSON(rakennukset,
     onEachFeature: function (feature, layer) {
         layer.bindPopup(buildingPopUp(feature), {
             keepInView: true,
-            maxWidth: 600,
-            maxHeight: 600,
         })
     },
     filter: function (feature, layer) {
@@ -95,7 +93,7 @@ const legend = L.multiControl(
         position:'topright',
         label: 'Control de capas',
         legendLabel: "tyyppi"}
-    ).addTo(map);
+).addTo(map);
 
 ```
 
