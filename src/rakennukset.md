@@ -85,16 +85,6 @@ var buildings = L.geoJSON(rakennukset,
     }
 }).addTo(map);
 
-const legend = L.multiControl(
-    [
-        {"name": "Rakennukset", "layer": buildings},
-        ],
-    {
-        position:'topright',
-        label: 'Control de capas',
-        legendLabel: "tyyppi"}
-).addTo(map);
-
 ```
 
 </div>
