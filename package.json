@@ -12,6 +12,8 @@
     "@observablehq/framework": "^1.13.3",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0",
+    "leaflet-multicontrol": "^1.0.5",
+    "leaflet.fullscreen": "^5.2.1",
     "observable": "^2.1.4"
   },
   "devDependencies": {

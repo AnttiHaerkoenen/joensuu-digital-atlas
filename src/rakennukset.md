@@ -1,10 +1,10 @@
 ---
-theme: dashboard
+style: /css/map-page.css
 title: Rakennuskannan kehitys
 toc: false
 ---
 
-# Rakennuskannan kehitys 1900-2025
+## Rakennuskannan kehitys 1900-2025
 
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
@@ -39,6 +39,7 @@ const map = L.map(mapDiv, {
     minZoom: 14,
     maxZoom: 17,
     maxBounds: [[62.588, 29.73081], [62.635, 29.77592]],
+    allowFullScreen: true,
 })
   .setView([62.599977, 29.756126], 14);
   /*.locate({
@@ -65,7 +66,8 @@ function buildingPopUp(feature) {
     }
 };
 
-L.geoJSON(rakennukset, {
+var buildings = L.geoJSON(rakennukset,
+{
     style: function (feature) {
         switch (feature.properties.tyyppi) {
             case 'julkinen': return {color: "#e20e0e"};
@@ -84,6 +86,17 @@ L.geoJSON(rakennukset, {
         return feature.properties.start <= year && year <= feature.properties.end;
     }
 }).addTo(map);
+
+const legend = L.multiControl(
+    [
+        {"name": "Rakennukset", "layer": buildings},
+        ],
+    {
+        position:'topright',
+        label: 'Control de capas',
+        legendLabel: "tyyppi"}
+    ).addTo(map);
+
 ```
 
 </div>
@@ -102,103 +115,6 @@ L.geoJSON(rakennukset, {
 ```js
 const year = Generators.input(yearInput);
 ```
+
 </div>
 </div>
-
-<style>
-
-#observablehq-footer {
-    margin-top: 4px;
-}
-
-.grid {
-    gap: 2px;
-}
-
-#grid1 h2 {
-    font-size: 22px;
-    font-family: var(--sans-serif);
-    font-style: bold;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.popup {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-wrap: balance;
-    max-height: 80%;
-    max-width: 100%;
-    min-width: 200px;
-}
-
-.popup h2 {
-    font-size: 16px;
-    text-align: left;
-    font-family: var(--sans-serif);
-    font-style: bold;
-}
-
-.popup p {
-    font-size: 14px;
-    margin-top: 0px;
-    margin-bottom: 2px;
-    text-align: justify;
-    font-family: var(--serif);
-}
-
-.popup footer {
-    font-size: 12px;
-    margin-top: 4px;
-    text-align: left;
-    font-style: italic;
-    font-family: var(--serif);
-}
-
-.popup img {
-    max-height: 100%;
-    min-height: 200px;
-    max-width: 100%;
-    min-width: 200px;
-    aspect-ratio: auto;
-}
-
-.popup figure {
-    margin-top: 1px;
-    margin-bottom: 0px;
-}
-
-figure {
-    margin-top: 6px;
-    margin-bottom: 6px;
-}
-
-figurecaption {
-    font-size: 14px;
-    margin-bottom: 0px;
-}
-
-label {
-    font-size: 20px;
-    padding: 2px;
-}
-
-#yearInput {
-    font-size: 18px;
-    padding: 2px;
-    width: 4em;
-}
-
-#largeImage #leaflet-container {
-    max-height: 100%;
-    min-height: 300px;
-    max-width: 100%;
-    min-width: 300px;
-    aspect-ratio: auto;    
-    display: flex;
-    flex-direction: column;
-
-}
-
-</style>

@@ -2,41 +2,39 @@
 title: Rakennusdata
 ---
 
-# Selite
-
-### rakennukset.json
+## rakennukset.json
 
 - [GeoJSON-standardin](https://geojsonlint.com) mukainen tekstitiedosto
 
-### Geometriatyypit
+## Geometriatyypit
 
 - "FeatureCollection"-kokoelmatyyppi
 - "Polygon"
 - "Point"
 
-#### coordinates
+### coordinates
 
 - lista koordinaattipareista muodossa [[x1, y1], [x2, y2], [x3, y3], ... jne.]
 - pisteissä [x, y]
 - koordinaatit desimaaliasteina (WGS84)
 
-### properties
+## properties
 
-#### kaupunginosa
+### kaupunginosa
 
 - "I" - "IV"
 
-#### tyyppi
+### tyyppi
 
 - "yksityinen"
 - "julkinen"
 - "puisto"
 
-#### url
+### url
 
 - kuvan pysyvä osoite
 - null
 
-#### oikeudet
+### oikeudet
 
 - kuvan oikeuden haltija
