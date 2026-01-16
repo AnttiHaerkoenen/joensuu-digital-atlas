@@ -18,7 +18,7 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 
 <div id="yearPicker" class="card grid-colspan-2">
 <label for="yearInput">Vuosikymmen</label>
-<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4>
+<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4 required="True">
 
 </div>
 
@@ -93,9 +93,9 @@ var buildings = L.geoJSON(rakennukset,
 <div id="picturePanel">
     <h2>${year}-luku</h2>
     <figure>
-        ${kuvat.get(String(year))}
+        ${kuvat.get(String(year)) || "Kuvaa ei löydetty"}
         <figurecaption>
-            ${ilmakuvat[year].caption}
+            ${ilmakuvat.hasOwnProperty(year) ? ilmakuvat[year].caption : ""}
         </figurecaption>
     </figure>
 </div>
