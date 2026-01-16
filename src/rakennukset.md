@@ -4,21 +4,50 @@ title: Rakennuskannan kehitys
 toc: false
 ---
 
-## Rakennuskannan kehitys 1900-2025
+## Rakennuskannan kehitys 1900&ndash;2025
 
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
 import {ilmakuvat} from "/data/ilmakuvat.json.js";
 
 const kuvat = new Map();
-for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmakuvat[y].url}" alt="Virhe: Kuvaa ei löydetty">`)}
+for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmakuvat[y].url}" alt="Kuvaa ei saatavilla">`)}
 ```
 
 <div id="grid1" class="grid grid-cols-2" style="grid-auto-rows: auto;">
 
-<div id="yearPicker" class="card grid-colspan-2">
+<div id="yearPicker" class="card">
 <label for="yearInput">Vuosikymmen</label>
 <input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4 required="True">
+
+```js
+const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
+const overlayOpacity = view(Inputs.range([0, 1], {value: 1, step: 0.01, label: "Näkyvyys"}));
+```
+
+</div>
+
+<div id="mapPicker" class="card">
+
+```js
+const oldMaps = [
+    {name: "1847", 
+    imageUrl: "https://expo.oscapps.jyu.fi/files/original/2617b1db085b60d176a0a4c2e81afbc40aa6fbdf.jpeg", 
+    attributionText: "Gyldén, C. W. 1847",
+    latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
+    },
+];
+
+const selectMap = view(
+  Inputs.select(oldMaps, {
+    label: "Valitse kartta",
+    format: (t) => t.name,
+    value: oldMaps.find((t) => t.name === "1847")
+  })
+)
+
+selectMap;
+```
 
 </div>
 
@@ -30,24 +59,24 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 const mapDiv = display(document.createElement("div", {"is": "mapDiv"}));
 mapDiv.style = "height: 700px;";
 
-/*function onLocationFound(e) {
-    var radius = e.accuracy;
-    L.circle(e.latlng, radius).addTo(map).bindPopup("Olet jossain täällä").openPopup();
-}*/
+// function onLocationFound(e) {
+//     var radius = e.accuracy;
+//     L.circle(e.latlng, radius).addTo(map).bindPopup("Olet jossain täällä").openPopup();
+// }
 
 const map = L.map(mapDiv, {
     minZoom: 14,
     maxZoom: 17,
     maxBounds: [[62.588, 29.73081], [62.635, 29.77592]],
     allowFullScreen: true,
-})
-  .setView([62.599977, 29.756126], 14);
-  /*.locate({
-    watch: false,
-    setView: true,
-    maxZoom: 15,
-  })
-  .on('locationfound', onLocationFound);*/
+}).setView([62.599977, 29.756126], 14);
+
+// map.locate({
+//     watch: false,
+//     setView: true,
+//     maxZoom: 15,
+//   })
+//   .on('locationfound', onLocationFound);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -65,6 +94,27 @@ function buildingPopUp(feature) {
         <p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
     }
 };
+
+// Historiallisen kartan lisäys
+
+var imageUrl = 'https://expo.oscapps.jyu.fi/files/original/2617b1db085b60d176a0a4c2e81afbc40aa6fbdf.jpeg';
+var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+var altText = 'Gyldén, C. W. 1847';
+var latLngBounds = L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]);
+
+var overlayMap = L.imageOverlay(imageUrl, latLngBounds, {
+    opacity: overlayOpacity,
+    errorOverlayUrl: errorOverlayUrl,
+    alt: altText,
+    interactive: true
+});
+
+if (overlayMapsOn) {
+    overlayMap.addTo(map);
+}
+
+
+// Rakennukset
 
 var buildings = L.geoJSON(rakennukset,
 {
