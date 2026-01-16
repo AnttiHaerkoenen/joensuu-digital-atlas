@@ -53,9 +53,9 @@
 }
 
 .popup img {
-    min-height: 200px;
+    min-height: auto;
     max-height: auto;
-    min-width: 200px;
+    min-width: auto;
     max-width: auto;
     aspect-ratio: auto;
 }
