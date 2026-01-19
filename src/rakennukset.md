@@ -22,7 +22,7 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 
 ```js
 const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
-const overlayOpacity = view(Inputs.range([0, 1], {value: 1, step: 0.01, label: "Näkyvyys"}));
+const overlayOpacity = view(Inputs.range([0, 1], {value: 0.0, step: 0.01, label: "Läpinäkyvyys"}));
 ```
 
 </div>
@@ -36,6 +36,11 @@ const oldMaps = [
     attributionText: "Gyldén, C. W. 1847",
     latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
     },
+    {name: "1948", 
+    imageUrl: "https://timomeriluoto.kapsi.fi/KARTAT/Kaupunkikartat/Joensuu%20asemakaava%201948.jpg", 
+    attributionText: "MML / Timo Meriluoto",
+    latLngBounds: L.latLngBounds([[62.588, 29.7307], [62.610, 29.776]]),
+    },
 ];
 
 const selectMap = view(
@@ -45,8 +50,6 @@ const selectMap = view(
     value: oldMaps.find((t) => t.name === "1847")
   })
 )
-
-selectMap;
 ```
 
 </div>
@@ -92,27 +95,30 @@ function buildingPopUp(feature) {
     else {
         return html`<div id="buildingPopUp" class="popup"><h2>${feature.properties.nimi}</h2>
         <p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
-    }
-};
+        }
+    };
 
 // Historiallisen kartan lisäys
 
 var imageUrl = 'https://expo.oscapps.jyu.fi/files/original/2617b1db085b60d176a0a4c2e81afbc40aa6fbdf.jpeg';
 var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
-var altText = 'Gyldén, C. W. 1847';
-var latLngBounds = L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]);
 
-var overlayMap = L.imageOverlay(imageUrl, latLngBounds, {
-    opacity: overlayOpacity,
+var overlayMap = L.imageOverlay(
+    oldMaps[0].imageUrl, 
+    oldMaps[0].latLngBounds, {
+    opacity: 1,
     errorOverlayUrl: errorOverlayUrl,
-    alt: altText,
+    alt: oldMaps[0].attributionText,
     interactive: true
-});
+    });
+
+overlayMap.setUrl(selectMap.imageUrl);
+overlayMap.setBounds(selectMap.latLngBounds);
+overlayMap.setOpacity(1 - overlayOpacity);
 
 if (overlayMapsOn) {
     overlayMap.addTo(map);
 }
-
 
 // Rakennukset
 

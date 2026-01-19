@@ -8,12 +8,12 @@ export const ilmakuvat = {
         "caption": "Joensuun ilmakuva",
     },
     1920: {
-        "url": null,
-        "caption": null,
+        "url": "https://joensuunvirta.fi/vanhajoensuu/content_img/ilmakuva_5.jpg",
+        "caption": "Telefoonitalo",
     },
     1930: {
-        "url": null,
-        "caption": null,
+        "url": "https://joensuunvirta.fi/vanhajoensuu/content_img/ilmakuva_7.jpg",
+        "caption": "Urheilukenttä",
     },
     1940: {
         "url": null,
