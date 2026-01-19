@@ -20,9 +20,20 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 <label for="yearInput">Vuosikymmen</label>
 <input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4 required="True">
 
+</div>
+
+<div id="mapPicker" class="card">
+
 ```js
 const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
-const overlayOpacity = view(Inputs.range([0, 1], {value: 0.0, step: 0.01, label: "Läpinäkyvyys"}));
+```
+
+</div>
+
+<div id="overlayDiv" class="card">
+
+```js
+const overlayOpacity = view(Inputs.range([0, 1], {value: 0.0, step: 0.05, label: "Läpinäkyvyys"}));
 ```
 
 </div>
