@@ -33,7 +33,7 @@ const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
 <div id="overlayDiv" class="card">
 
 ```js
-const overlayOpacity = view(Inputs.range([0, 1], {value: 0.0, step: 0.05, label: "Läpinäkyvyys"}));
+const overlayOpacity = view(Inputs.range([0, 1], {value: 0.0, step: 0.1, label: "Läpinäkyvyys"}));
 ```
 
 </div>
