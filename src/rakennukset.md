@@ -18,7 +18,7 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 
 <div id="yearPicker" class="card">
 <label for="yearInput">Vuosikymmen</label>
-<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size=4 required="True">
+<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="5em" required="True">
 
 </div>
 
@@ -33,7 +33,14 @@ const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
 <div id="overlayDiv" class="card">
 
 ```js
-const overlayOpacity = view(Inputs.range([0, 1], {value: 0.0, step: 0.1, label: "Läpinäkyvyys"}));
+const overlayOpacity = view(Inputs.range(
+    [0, 1], {
+        value: 0.0, 
+        step: 0.1, 
+        width: "15em",
+        label: "Läpinäkyvyys"
+        }
+    ));
 ```
 
 </div>
@@ -57,6 +64,7 @@ const oldMaps = [
 const selectMap = view(
   Inputs.select(oldMaps, {
     label: "Valitse kartta",
+    width: "5em",
     format: (t) => t.name,
     value: oldMaps.find((t) => t.name === "1847")
   })

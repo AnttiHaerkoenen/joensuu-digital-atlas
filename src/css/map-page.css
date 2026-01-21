@@ -10,7 +10,7 @@
     gap: 2px;
 }
 
-#grid1 h2 {
+#main-grid .h2 {
     font-size: 22px;
     font-family: var(--sans-serif);
     font-style: bold;
@@ -65,23 +65,23 @@
     margin-bottom: 0px;
 }
 
-figure {
+.figure {
     margin-top: 6px;
     margin-bottom: 6px;
 }
 
-figurecaption {
+.figurecaption {
     font-size: 14px;
     margin-bottom: 0px;
 }
 
-label {
+.label {
     font-size: 20px;
     padding: 2px;
 }
 
 #yearInput {
-    font-size: 18px;
+    font-size: inherit;
     padding: 2px;
     width: 4em;
 }
