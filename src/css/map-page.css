@@ -14,7 +14,7 @@
     margin: 2px;
 }
 
-#main-grid .h2 {
+.card h2 {
     font-size: 22px;
     font-family: var(--sans-serif);
     font-style: bold;
@@ -33,7 +33,7 @@
     max-width: auto;
 }
 
-.popup h2 {
+.popup h3 {
     font-size: 16px;
     text-align: left;
     font-family: var(--sans-serif);
