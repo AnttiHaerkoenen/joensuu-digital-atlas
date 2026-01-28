@@ -10,6 +10,10 @@
     gap: 2px;
 }
 
+.observablehq--block {
+    margin: 2px;
+}
+
 #main-grid .h2 {
     font-size: 22px;
     font-family: var(--sans-serif);
@@ -80,10 +84,8 @@
     padding: 2px;
 }
 
-#yearInput {
+input {
     font-size: inherit;
-    padding: 2px;
-    width: 4em;
 }
 
 #largeImage #leaflet-container {

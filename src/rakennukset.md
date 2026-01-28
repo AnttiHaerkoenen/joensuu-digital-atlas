@@ -15,13 +15,26 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 ```
 
 <div id="grid1" class="grid grid-cols-2" style="grid-auto-rows: auto;">
-
+<div id="grid2" class="grid grid-cols-1">
 <div id="yearPicker" class="card">
+
+<form>
 <label for="yearInput">Vuosikymmen</label>
-<input id="yearInput" type="number" value=1900 min=1900 max=2025 step=10 size="5em" required="True">
+<input id="yearInput" type="number" value=1900 min=1900 max=2000 step=10 size="5em" required="True">
+</form>
+
+<!-- ```js
+const yearInput = view(Inputs.range(
+    [1900, 2000], {
+        value: 1900,
+        step: 10,
+        width: "15em",
+        label: "Vuosikymmen",
+    }
+))
+``` -->
 
 </div>
-
 <div id="mapPicker" class="card">
 
 ```js
@@ -29,22 +42,24 @@ const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
 ```
 
 </div>
+</div>
 
+<div id="grid3" class="grid grid-cols-1">
 <div id="overlayDiv" class="card">
 
 ```js
 const overlayOpacity = view(Inputs.range(
-    [0, 1], {
-        value: 0.0, 
-        step: 0.1, 
+    [0, 100], {
+        value: 0, 
+        step: 10, 
         width: "15em",
-        label: "Läpinäkyvyys"
+        label: "Läpinäkyvyys, %",
+        disabled: !overlayMapsOn,
         }
     ));
 ```
 
 </div>
-
 <div id="mapPicker" class="card">
 
 ```js
@@ -66,11 +81,13 @@ const selectMap = view(
     label: "Valitse kartta",
     width: "5em",
     format: (t) => t.name,
-    value: oldMaps.find((t) => t.name === "1847")
+    value: oldMaps.find((t) => t.name === "1847"),
+    disabled: !overlayMapsOn,
   })
 )
 ```
 
+</div>
 </div>
 
 <div id="mapPanel" class="card">
@@ -133,11 +150,9 @@ var overlayMap = L.imageOverlay(
 
 overlayMap.setUrl(selectMap.imageUrl);
 overlayMap.setBounds(selectMap.latLngBounds);
-overlayMap.setOpacity(1 - overlayOpacity);
+overlayMap.setOpacity((100 - overlayOpacity) / 100);
 
-if (overlayMapsOn) {
-    overlayMap.addTo(map);
-}
+if (overlayMapsOn) {overlayMap.addTo(map);}
 
 // Rakennukset
 
