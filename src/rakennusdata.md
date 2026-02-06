@@ -22,7 +22,7 @@ title: Rakennusdata
 
 ### kaupunginosa
 
-- "I" - "IV"
+- "I", "II", "III" tai "IV"
 
 ### tyyppi
 
@@ -35,6 +35,19 @@ title: Rakennusdata
 - kuvan pysyvä osoite
 - null
 
+### start
+
+- rakennusvuosi, jos tiedossa
+- muuten vuosi, jona viimeistään rakennettu
+- String tai Int
+
+### end
+
+- purkuvuosi, jos tiedossa
+- vuosi, jona viimeistään purettu
+- String tai Int
+- jos vielä pystyssä, null
+
 ### oikeudet
 
-- kuvan oikeuden haltija
+- kuvan oikeuksien haltija

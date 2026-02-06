@@ -1,4 +1,6 @@
-export const rakennukset = {
+import { Temporal } from '@js-temporal/polyfill';
+
+var rakennukset = {
     "type": "FeatureCollection",
     "features": [
         {
@@ -9,7 +11,7 @@ export const rakennukset = {
                 "tyyppi": "julkinen",
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1887",
-                "end": "2025",
+                "end": null,
                 "kaupunginosa": "II",
                 "oikeudet": "Wikimedia Commons"
             },
@@ -48,7 +50,7 @@ export const rakennukset = {
                 "tyyppi": "yksityinen",
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1935",
-                "end": "2024",
+                "end": null,
                 "kaupunginosa": "III",
                 "oikeudet": "Wikimedia Commons"
             },
@@ -88,7 +90,7 @@ export const rakennukset = {
             "tyyppi": "julkinen",
             "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Joensuun_kirjasto_03.jpg",
             "start": "1995",
-            "end": "2024",
+            "end": null,
             "kaupunginosa": "I",
             "oikeudet": "2014, Anni Vartola"
         },
@@ -110,8 +112,8 @@ export const rakennukset = {
             "teksti": "Lorem ipsum",
             "tyyppi": "puisto",
             "url": null,
-            "start": "1920",
-            "end": "2025",
+            "start": 1920,
+            "end": null,
             "kaupunginosa": "II",
             "oikeudet": null
       },
@@ -144,3 +146,10 @@ export const rakennukset = {
       }
     }
 ]}
+var currentYear = Temporal.Now.plainDateISO().year;
+rakennukset.features = rakennukset.features.map(function (feature) {
+  let endYear = feature.properties.end;
+  feature.properties.end = (endYear == null) ? currentYear : endYear;
+  return feature;
+});
+export var rakennukset;

@@ -124,13 +124,24 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 function buildingPopUp(feature) {
     if (feature.properties.url != null) {
-        return html`<div id="buildingPopUp" class="popup"><h3>${feature.properties.nimi}</h3>
-        <figure><img src="${feature.properties.url}"><figcaption> &copy; ${feature.properties.oikeudet}<figcaption></figure>
-        <p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+        return html`
+        <div id="buildingPopUp" class="popup">
+        <h3>${feature.properties.nimi}</h3>
+        <figure>
+        <img src="${feature.properties.url}">
+        <figcaption> &copy; ${feature.properties.oikeudet}<figcaption>
+        </figure>
+        <p>${feature.properties.teksti}</p>
+        <footer>${feature.properties.kaupunginosa}</footer>
+        </div>`;
         }
     else {
-        return html`<div id="buildingPopUp" class="popup"><h3>${feature.properties.nimi}</h3>
-        <p>${feature.properties.teksti}</p><footer>${feature.properties.kaupunginosa}</footer></div>`;
+        return html`
+        <div id="buildingPopUp" class="popup">
+        <h3>${feature.properties.nimi}</h3>
+        <p>${feature.properties.teksti}</p>
+        <footer>${feature.properties.kaupunginosa}</footer>
+        </div>`;
         }
     };
 
@@ -192,6 +203,7 @@ var buildings = L.geoJSON(rakennukset,
 
 ```js
 const year = Generators.input(yearInput);
+
 ```
 
 </div>
