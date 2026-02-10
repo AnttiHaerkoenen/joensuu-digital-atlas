@@ -7,13 +7,14 @@ var rakennukset = {
             "type": "Feature",
             "properties": {
                 "nimi": "Pyhän Nikolaoksen kirkko",
-                "teksti": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+                "teksti": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 "tyyppi": "julkinen",
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1887",
                 "end": null,
                 "kaupunginosa": "II",
-                "oikeudet": "Wikimedia Commons"
+                "oikeudet": "Wikimedia Commons",
+                "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
             },
             "geometry": {
                 "coordinates": [
@@ -52,7 +53,9 @@ var rakennukset = {
                 "start": "1935",
                 "end": null,
                 "kaupunginosa": "III",
-                "oikeudet": "Wikimedia Commons"
+                "oikeudet": "Wikimedia Commons",
+                "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
+
             },
       "geometry": {
         "coordinates": [
@@ -86,13 +89,15 @@ var rakennukset = {
         "type": "Feature",
         "properties": {
             "nimi": "Kirjasto",
-            "teksti": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+            "teksti": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             "tyyppi": "julkinen",
             "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Joensuun_kirjasto_03.jpg",
             "start": "1995",
             "end": null,
             "kaupunginosa": "I",
-            "oikeudet": "2014, Anni Vartola"
+            "oikeudet": "2014, Anni Vartola",
+            "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
+
         },
         "geometry": {
             "type": "Polygon",
@@ -114,7 +119,8 @@ var rakennukset = {
             "url": null,
             "start": 1920,
             "end": null,
-            "kaupunginosa": "II",
+            "kaupunginosa": "II",                
+            "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
             "oikeudet": null
       },
       "geometry": {

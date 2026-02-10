@@ -132,7 +132,9 @@ function buildingPopUp(feature) {
         <figcaption> &copy; ${feature.properties.oikeudet}<figcaption>
         </figure>
         <p>${feature.properties.teksti}</p>
-        <footer>${feature.properties.kaupunginosa}</footer>
+        <footer>
+        <details><summary>Lähteet</summary>${feature.properties.sources}</details>
+        </footer>
         </div>`;
         }
     else {
@@ -140,7 +142,9 @@ function buildingPopUp(feature) {
         <div id="buildingPopUp" class="popup">
         <h3>${feature.properties.nimi}</h3>
         <p>${feature.properties.teksti}</p>
-        <footer>${feature.properties.kaupunginosa}</footer>
+        <footer>
+        <details><summary>Lähteet</summary>${feature.properties.sources}</details>
+        </footer>
         </div>`;
         }
     };

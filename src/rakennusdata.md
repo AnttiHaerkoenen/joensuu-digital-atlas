@@ -48,6 +48,16 @@ title: Rakennusdata
 - String tai Int
 - jos vielä pystyssä, null
 
+### teksti
+
+- rakennuksen kuvailuteksti, yksi kappale
+- enintään 500 merkkiä
+- ei ylimääräisiä välilyöntejä, rivinvaihtoja tai sarkaimia
+
+### sources
+
+- lähteet lyhyesti
+
 ### oikeudet
 
 - kuvan oikeuksien haltija

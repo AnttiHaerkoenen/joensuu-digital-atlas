@@ -13,6 +13,7 @@ export default {
         {name: "Kartta", path: "/rakennukset"},
         {name: "Data", path: "/rakennusdata"},
         {name: "Info", path: "/info"},
+        {name: "Lähteet", path: "/sources"},
       ]
     }
   ],
