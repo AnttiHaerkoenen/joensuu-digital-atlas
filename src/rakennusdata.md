@@ -20,10 +20,6 @@ title: Rakennusdata
 
 ## properties
 
-### kaupunginosa
-
-- "I", "II", "III" tai "IV"
-
 ### tyyppi
 
 - "yksityinen"
@@ -46,7 +42,7 @@ title: Rakennusdata
 - purkuvuosi, jos tiedossa
 - vuosi, jona viimeistään purettu
 - String tai Int
-- jos vielä pystyssä, null
+- jos vielä pystyssä, 2026 tai null
 
 ### teksti
 

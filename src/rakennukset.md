@@ -51,7 +51,7 @@ const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
 const overlayOpacity = view(Inputs.range(
     [0, 100], {
         value: 0, 
-        step: 10, 
+        step: 5, 
         width: "15em",
         label: "Läpinäkyvyys, %",
         disabled: !overlayMapsOn,

@@ -12,7 +12,6 @@ var rakennukset = {
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1887",
                 "end": null,
-                "kaupunginosa": "II",
                 "oikeudet": "Wikimedia Commons",
                 "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
             },
@@ -52,7 +51,6 @@ var rakennukset = {
                 "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Joensuu_Orth_Church.JPG",
                 "start": "1935",
                 "end": null,
-                "kaupunginosa": "III",
                 "oikeudet": "Wikimedia Commons",
                 "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
 
@@ -94,7 +92,6 @@ var rakennukset = {
             "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Joensuun_kirjasto_03.jpg",
             "start": "1995",
             "end": null,
-            "kaupunginosa": "I",
             "oikeudet": "2014, Anni Vartola",
             "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
 
@@ -119,7 +116,6 @@ var rakennukset = {
             "url": null,
             "start": 1920,
             "end": null,
-            "kaupunginosa": "II",                
             "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
             "oikeudet": null
       },
