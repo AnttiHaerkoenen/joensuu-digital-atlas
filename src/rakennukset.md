@@ -23,17 +23,6 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 <input id="yearInput" type="number" value=1900 min=1900 max=2000 step=10 size="5em" required="True">
 </form>
 
-<!-- ```js
-const yearInput = view(Inputs.range(
-    [1900, 2000], {
-        value: 1900,
-        step: 10,
-        width: "15em",
-        label: "Vuosikymmen",
-    }
-))
-``` -->
-
 </div>
 <div id="mapPicker" class="card">
 
@@ -207,7 +196,6 @@ var buildings = L.geoJSON(rakennukset,
 
 ```js
 const year = Generators.input(yearInput);
-
 ```
 
 </div>
