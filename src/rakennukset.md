@@ -149,7 +149,7 @@ const oldMaps = [
     latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
     },
     {name: "1928",
-    imageUrl: "https://github.com/AnttiHaerkoenen/joensuu-digital-atlas/blob/main/src/img/maps/1928.jpg",
+    imageUrl: "https://raw.githubusercontent.com/AnttiHaerkoenen/joensuu-digital-atlas/refs/heads/main/src/img/maps/1928.jpg",
     attributionText: "Joensuun kaupungin asemakaava. KA Kaupunkikartat, Joensuu Ieb* 3",
     latLngBounds: L.latLngBounds([[62.57884, 29.72547], [62.61433, 29.80331]]),
     },
