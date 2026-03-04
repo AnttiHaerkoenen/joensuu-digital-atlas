@@ -50,6 +50,8 @@ title: Rakennusdata
 - enintään 500 merkkiä
 - ei ylimääräisiä välilyöntejä, rivinvaihtoja tai sarkaimia
 
+<div class="warning" label="Huomio">Tarkistakaa, ettei tekstissä ole ylimääräisiä näkymättömiä merkkejä, kuten sarkaimia </div>
+
 ### sources
 
 - lähteet lyhyesti
