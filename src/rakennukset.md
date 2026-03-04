@@ -15,40 +15,13 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 ```
 
 <div id="grid1" class="grid grid-cols-2" style="grid-auto-rows: auto;">
-<div id="grid2" class="grid grid-cols-1">
 <div id="yearPicker" class="card">
 
-<form>
 <label for="yearInput">Vuosikymmen</label>
 <input id="yearInput" type="number" value=1900 min=1900 max=2000 step=10 size="5em" required="True">
-</form>
 
 </div>
-<div id="mapPicker" class="card">
 
-```js
-const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
-```
-
-</div>
-</div>
-
-<div id="grid3" class="grid grid-cols-1">
-<div id="overlayDiv" class="card">
-
-```js
-const overlayOpacity = view(Inputs.range(
-    [0, 100], {
-        value: 0, 
-        step: 5, 
-        width: "15em",
-        label: "Läpinäkyvyys, %",
-        disabled: !overlayMapsOn,
-        }
-    ));
-```
-
-</div>
 <div id="mapPicker" class="card">
 
 ```js
@@ -65,18 +38,34 @@ const oldMaps = [
     },
 ];
 
-const selectMap = view(
-  Inputs.select(oldMaps, {
+const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
+
+const selectMap = Inputs.select(oldMaps, {
     label: "Valitse kartta",
     width: "5em",
     format: (t) => t.name,
     value: oldMaps.find((t) => t.name === "1847"),
     disabled: !overlayMapsOn,
-  })
-)
+  });
+
+const overlayOpacity = Inputs.range(
+    [0, 100], {
+        value: 0, 
+        step: 5, 
+        width: "15em",
+        label: "Läpinäkyvyys, %",
+        disabled: !overlayMapsOn,
+        }
+    );
+
+const oldMapsInput = view(Inputs.form({
+    "pickMap": selectMap,
+    "opacity": overlayOpacity, 
+}));
+
+oldMapsInput;
 ```
 
-</div>
 </div>
 
 <div id="mapPanel" class="card">
@@ -152,9 +141,9 @@ var overlayMap = L.imageOverlay(
     interactive: true
     });
 
-overlayMap.setUrl(selectMap.imageUrl);
-overlayMap.setBounds(selectMap.latLngBounds);
-overlayMap.setOpacity((100 - overlayOpacity) / 100);
+overlayMap.setUrl(oldMapsInput.pickMap.imageUrl);
+overlayMap.setBounds(oldMapsInput.pickMap.latLngBounds);
+overlayMap.setOpacity((100 - oldMapsInput.opacity) / 100);
 
 if (overlayMapsOn) {overlayMap.addTo(map);}
 
