@@ -4,7 +4,7 @@ title: Rakennuskannan kehitys
 toc: false
 ---
 
-## Rakennuskannan kehitys 1900&ndash;2025
+## Rakennuskannan kehitys 1930&ndash;2000
 
 ```js
 import {rakennukset} from "/data/rakennukset.json.js";
@@ -123,6 +123,7 @@ var buildings = L.geoJSON(rakennukset,
 <div id="yearPicker" class="card grid-rowspan-1">
 
 ## Vuosikymmen
+
 <!-- <label for="yearInput">Rakennukset vuodelta</label><br> -->
 <input id="yearInput" type="number" value=1930 min=1930 max=2000 step=10 size="5em" required="True">
 
@@ -146,6 +147,11 @@ const oldMaps = [
     imageUrl: "https://expo.oscapps.jyu.fi/files/original/2617b1db085b60d176a0a4c2e81afbc40aa6fbdf.jpeg", 
     attributionText: "Gyldén, C. W. 1847",
     latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
+    },
+    {name: "1928",
+    imageUrl: "https://github.com/AnttiHaerkoenen/joensuu-digital-atlas/blob/main/src/img/maps/1928.jpg",
+    attributionText: "Joensuun kaupungin asemakaava. KA Kaupunkikartat, Joensuu Ieb* 3",
+    latLngBounds: L.latLngBounds([[62.57884, 29.72547], [62.61433, 29.80331]]),
     },
     {name: "1948", 
     imageUrl: "https://timomeriluoto.kapsi.fi/KARTAT/Kaupunkikartat/Joensuu%20asemakaava%201948.jpg", 

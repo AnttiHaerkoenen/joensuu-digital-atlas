@@ -20,11 +20,23 @@ title: Rakennusdata
 
 ## properties
 
+### osoite
+
+- vain omaan käyttöön
+- talon nimi, tontin nro, tai yleisesti käytetty nimi
+
+### teksti
+
+- rakennuksen kuvailuteksti, yksi kappale
+- enintään 500 merkkiä
+- ei ylimääräisiä välilyöntejä, rivinvaihtoja tai sarkaimia
+
+<div class="warning" label="Huomio">Tarkistakaa, ettei tekstissä ole ylimääräisiä näkymättömiä merkkejä, kuten sarkaimia </div>
+
 ### tyyppi
 
 - "yksityinen"
 - "julkinen"
-- "puisto"
 
 ### url
 
@@ -43,14 +55,6 @@ title: Rakennusdata
 - vuosi, jona viimeistään purettu
 - String tai Int
 - jos vielä pystyssä, 2026 tai null
-
-### teksti
-
-- rakennuksen kuvailuteksti, yksi kappale
-- enintään 500 merkkiä
-- ei ylimääräisiä välilyöntejä, rivinvaihtoja tai sarkaimia
-
-<div class="warning" label="Huomio">Tarkistakaa, ettei tekstissä ole ylimääräisiä näkymättömiä merkkejä, kuten sarkaimia </div>
 
 ### sources
 
