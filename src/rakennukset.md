@@ -151,7 +151,7 @@ const oldMaps = [
     {name: "1928",
     imageUrl: "https://raw.githubusercontent.com/AnttiHaerkoenen/joensuu-digital-atlas/refs/heads/main/src/img/maps/1928.jpg",
     attributionText: "Joensuun kaupungin asemakaava. KA Kaupunkikartat, Joensuu Ieb* 3",
-    latLngBounds: L.latLngBounds([[62.5795, 29.72536156], [62.614, 29.8045]]),
+    latLngBounds: L.latLngBounds([[62.5806, 29.728], [62.6133, 29.8035]]),
     },
     {name: "1948", 
     imageUrl: "https://timomeriluoto.kapsi.fi/KARTAT/Kaupunkikartat/Joensuu%20asemakaava%201948.jpg", 
