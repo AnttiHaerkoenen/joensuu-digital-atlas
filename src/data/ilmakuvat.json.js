@@ -31,12 +31,4 @@ export const ilmakuvat = {
         "url": null,
         "caption": null,
     },
-    2010: {
-        "url": null,
-        "caption": null,
-    },
-    2020: {
-        "url": null,
-        "caption": null,
-    },
 };
