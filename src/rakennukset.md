@@ -24,24 +24,29 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 const mapDiv = display(document.createElement("div", {"is": "mapDiv"}));
 mapDiv.style = "height: 700px;";
 
-// function onLocationFound(e) {
-//     var radius = e.accuracy;
-//     L.circle(e.latlng, radius).addTo(map).bindPopup("Olet jossain täällä").openPopup();
-// }
+function onLocationFound(e) {
+    var radius = e.accuracy;
+    L.circle(e.latlng, radius).addTo(map).bindPopup("Olet jossain täällä").openPopup();
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
 
 const map = L.map(mapDiv, {
     minZoom: 14,
     maxZoom: 17,
     maxBounds: [[62.588, 29.73081], [62.635, 29.77592]],
     allowFullScreen: true,
-}).setView([62.599977, 29.756126], 14);
+    }).setView([62.599977, 29.756126], 14);
 
-// map.locate({
-//     watch: false,
-//     setView: true,
-//     maxZoom: 15,
-//   })
-//   .on('locationfound', onLocationFound);
+if (showLocation) {map.locate({
+    watch: true,
+    setView: true,
+    maxZoom: 15,
+    });}
+
+map.on('locationfound', onLocationFound);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -183,6 +188,11 @@ const overlayOpacity = view(Inputs.range(
         }
     ));
 
+const showLocation = view(Inputs.toggle({
+    label: "Näytä oma sijainti",
+    value: true,
+}
+))
 ```
 
 </div>
