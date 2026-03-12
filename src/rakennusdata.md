@@ -71,7 +71,7 @@ Jos saman rakennuksen tiedot pitää jakaa ajallisesti kahteen osaan, laita vanh
 ### sources
 
 - lähteet lyhyesti
-- pitkä versio lähdeluetteloon [Lähteet](/sources)-välilehteen
+- pitkä versio lähdeluetteloon [Lähteet](./lahteet)-välilehteen
 
 <div class="tip" label="Vinkki">
 Tässä voi käyttää samoja ohjeita kuin historian gradun alaviitteissä.

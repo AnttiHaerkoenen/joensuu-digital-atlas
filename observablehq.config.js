@@ -10,9 +10,9 @@ export default {
     {
       name: "",
       pages: [
-        {name: "Kartta", path: "/rakennukset"},
+        {name: "Kartta", path: "/kartta"},
         {name: "Ilmakuvat", path: "/ilmakuvat"},
-        {name: "Lähteet", path: "/sources"},        
+        {name: "Lähteet", path: "/lahteet"},        
         {name: "Datan rakenne", path: "/rakennusdata"},
       ]
     }
