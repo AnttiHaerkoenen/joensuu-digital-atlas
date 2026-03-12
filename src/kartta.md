@@ -29,6 +29,7 @@ function onLocationFound(e) {
     var circle = L.circle(
         e.latlng, 
         radius,
+        color='#f7260b',
         fillColor='#f7260b',
         );
     circle.addTo(map).bindPopup("Olet jossain täällä").openPopup();
