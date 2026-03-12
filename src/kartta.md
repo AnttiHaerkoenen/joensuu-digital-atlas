@@ -26,7 +26,11 @@ mapDiv.style = "height: 700px;";
 
 function onLocationFound(e) {
     var radius = e.accuracy;
-    var circle = L.circle(e.latlng, radius);
+    var circle = L.circle(
+        e.latlng, 
+        radius,
+        fillColor='#f7260b',
+        );
     circle.addTo(map).bindPopup("Olet jossain täällä").openPopup();
 }
 
@@ -108,9 +112,8 @@ var buildings = L.geoJSON(rakennukset,
 {
     style: function (feature) {
         switch (feature.properties.tyyppi) {
-            case 'julkinen': return {color: "#e20e0e"};
-            case 'yksityinen': return {color: "#1c1cc5"};
-            case 'puisto': return {color: "#7fd85c"};
+            case 'julkinen': return {color: "#75bb34"};
+            case 'yksityinen': return {color: "#3198c7"};
         };
     },
     onEachFeature: function (feature, layer) {
