@@ -26,7 +26,8 @@ mapDiv.style = "height: 700px;";
 
 function onLocationFound(e) {
     var radius = e.accuracy;
-    L.circle(e.latlng, radius).addTo(map).bindPopup("Olet jossain täällä").openPopup();
+    var circle = L.circle(e.latlng, radius);
+    circle.addTo(map).bindPopup("Olet jossain täällä").openPopup();
 }
 
 function onLocationError(e) {
@@ -44,9 +45,10 @@ if (showLocation) {map.locate({
     watch: true,
     setView: true,
     maxZoom: 15,
+    maximumAge: 1000,
     });}
 
-map.on('locationfound', onLocationFound);
+map.once('locationfound', onLocationFound);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
