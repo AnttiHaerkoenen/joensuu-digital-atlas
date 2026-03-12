@@ -107,46 +107,6 @@ var rakennukset = {
             ]]
         },
       },
-      {
-      "type": "Feature",
-      "properties": {
-            "nimi": "Vapaudenpuisto",
-            "teksti": "Lorem ipsum",
-            "tyyppi": "puisto",
-            "url": null,
-            "start": 1920,
-            "end": null,
-            "sources": "Lähteitä 2000, Lisää lähteitä, Lähteitä 1945",
-            "oikeudet": null
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              29.764991156782344,
-              62.60060245640244
-            ],
-            [
-              29.763506031232538,
-              62.60089215219628
-            ],
-            [
-              29.762610522693365,
-              62.599925128448405
-            ],
-            [
-              29.764126680716117,
-              62.59963746340881
-            ],
-            [
-              29.764991156782344,
-              62.60060245640244
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      }
-    }
 ]}
 var currentYear = Temporal.Now.plainDateISO().year;
 rakennukset.features = rakennukset.features.map(function (feature) {

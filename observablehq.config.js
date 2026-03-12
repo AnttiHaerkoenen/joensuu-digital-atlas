@@ -12,8 +12,8 @@ export default {
       pages: [
         {name: "Kartta", path: "/rakennukset"},
         {name: "Ilmakuvat", path: "/ilmakuvat"},
-        {name: "Data", path: "/rakennusdata"},
-        {name: "Lähteet", path: "/sources"},
+        {name: "Lähteet", path: "/sources"},        
+        {name: "Datan rakenne", path: "/rakennusdata"},
       ]
     }
   ],
