@@ -22,18 +22,19 @@ for (let y in ilmakuvat) {kuvat.set(y, html`<img class="largeImage" src="${ilmak
 
 ```js
 const mapDiv = display(document.createElement("div", {"is": "mapDiv"}));
-mapDiv.style = "height: 700px;";
+mapDiv.style = 'height: 700px;';
 
 function onLocationFound(e) {
     var radius = e.accuracy;
     var circle = L.circle(
         e.latlng, {
             radius: radius,
-            color: '#f7260b',
-            fillColor: '#f7260b',
+            color: '#f03',
+            fillColor: '#f03',
             }
             );
-    circle.addTo(map).bindPopup("Olet jossain täällä").openPopup();
+    circle.addTo(map)
+    .bindPopup("Olet täällä").openPopup();
 }
 
 function onLocationError(e) {
@@ -114,8 +115,8 @@ var buildings = L.geoJSON(rakennukset,
 {
     style: function (feature) {
         switch (feature.properties.tyyppi) {
-            case 'julkinen': return {color: "#8a5a00"};
-            case 'yksityinen': return {color: "#62769c"};
+            case 'julkinen': return {color: '#9C2BCB'};
+            case 'yksityinen': return {color: '#2A81CB'};
         };
     },
     onEachFeature: function (feature, layer) {
