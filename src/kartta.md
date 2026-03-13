@@ -91,19 +91,16 @@ function buildingPopUp(feature) {
 
 // Historiallisen kartan lisäys
 
-var imageUrl = 'https://expo.oscapps.jyu.fi/files/original/2617b1db085b60d176a0a4c2e81afbc40aa6fbdf.jpeg';
-var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+var baseUrl = 'https://raw.githubusercontent.com/AnttiHaerkoenen/joensuu-digital-atlas/refs/heads/main/src/img/maps/'
 
 var overlayMap = L.imageOverlay(
-    oldMaps[0].imageUrl, 
+    baseUrl + oldMaps[0].imageUrl, 
     oldMaps[0].latLngBounds, {
     opacity: 1,
-    errorOverlayUrl: errorOverlayUrl,
-    alt: oldMaps[0].attributionText,
     interactive: true
     });
 
-overlayMap.setUrl(selectMap.imageUrl);
+overlayMap.setUrl(baseUrl + selectMap.imageUrl);
 overlayMap.setBounds(selectMap.latLngBounds);
 overlayMap.setOpacity((100 - overlayOpacity) / 100);
 
@@ -156,23 +153,23 @@ var buildings = L.geoJSON(rakennukset,
 
 ```js
 const oldMaps = [
-    // {name: "1847", 
-    // imageUrl: "https://expo.oscapps.jyu.fi/files/original/2617b1db085b60d176a0a4c2e81afbc40aa6fbdf.jpeg", 
-    // attributionText: "Gyldén, C. W. 1847",
-    // latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
-    // },
-    {name: "1928",
-    imageUrl: "https://raw.githubusercontent.com/AnttiHaerkoenen/joensuu-digital-atlas/refs/heads/main/src/img/maps/1928.jpg",
-    attributionText: "Joensuun kaupungin asemakaava. KA Kaupunkikartat, Joensuu Ieb* 3",
+    {name: '1847', 
+    imageUrl: '1847.jpg', 
+    attributionText: 'Gyldén, C. W. 1847',
+    latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
+    },
+    {name: '1928',
+    imageUrl: '1928.jpg',
+    attributionText: 'Joensuun kaupungin asemakaava. KA Kaupunkikartat, Joensuu Ieb* 3',
     latLngBounds: L.latLngBounds([[62.5798, 29.7272], [62.6135, 29.8014]]),
     },
-    // {name: "1948", 
+    // {name: '1948', 
     // imageUrl: "https://timomeriluoto.kapsi.fi/KARTAT/Kaupunkikartat/Joensuu%20asemakaava%201948.jpg", 
     // attributionText: "MML / Timo Meriluoto",
     // latLngBounds: L.latLngBounds([[62.588, 29.7307], [62.610, 29.776]]),
     // },
 ];
-const overlayMapsOn = view(Inputs.toggle({label: "Vanhat kartat"}));
+const overlayMapsOn = view(Inputs.toggle({label: 'Vanhat kartat'}));
 ```
 
 ```js
@@ -181,7 +178,7 @@ const selectMap = view(Inputs.select(
         label: "Valitse kartta",
         width: "5em",
         format: (t) => t.name,
-        value: oldMaps.find((t) => t.name === "1847"),
+        value: oldMaps.find((t) => t.name === '1847'),
         disabled: !overlayMapsOn,
         }
     ));
