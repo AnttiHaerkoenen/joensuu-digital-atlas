@@ -156,7 +156,7 @@ const oldMaps = [
     {name: '1847', 
     imageUrl: '1847.jpg', 
     attributionText: 'Gyldén, C. W. 1847',
-    latLngBounds: L.latLngBounds([[62.588, 29.73081], [62.610, 29.77592]]),
+    latLngBounds: L.latLngBounds([[62.5912, 29.7405], [62.6095, 29.775]]),
     },
     {name: '1928',
     imageUrl: '1928.jpg',
