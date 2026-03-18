@@ -46,6 +46,7 @@ Tarkistakaa, ettei tekstissä ole ylimääräisiä näkymättömiä merkkejä, k
 
 - kuvan pysyvä osoite (kuvatiedoston nimi) <b>tai</b>
 - null
+- nimen on oltava uniikki
 
 <div class="tip" label="Vinkki">
 Anna kuvatiedostoille selkeä ja kuvaava nimi. Turvallisinta on käyttää pelkkiä ASCII-merkkejä, mutta ei välilyöntiä tai muita erikoismerkkejä.
