@@ -22,6 +22,14 @@ title: Rakennusdata
 
 ## properties
 
+<div class="note" label="Ohje">
+Alla olevat alaotsikot (osoite jne.) ovat geopackage-tiedostossa käytettäviä attribuuttien eli ominaisuuksien nimiä, eli attribuuttitaulun sarakkeita.
+</div>
+
+<div class="warning" label="Huomio">
+Kirjoita sarakkeiden nimet täsmälleen samalla tavalla kuin alla, pienellä alkukirjaimella ja ilman muotoiluja.
+</div>
+
 ### osoite
 
 - vain omaan käyttöön
